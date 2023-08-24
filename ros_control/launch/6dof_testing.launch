@@ -1,0 +1,34 @@
+
+
+<launch>
+	 <rosparam file="$(find ros_control)/config/6dof_control.yaml" command="load"/>
+
+	 <!-- <param name="robot_description" command="$(find xacro)/xacro inorder '$(find ros_control)/urdf/6dof_advanced/main.xacro'"/>  -->
+
+	<param name="robot_description" textfile="$(find ros_control)/urdf/6dof_advanced/6dof_arm.urdf"/>
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+			  
+
+	<node name="rviz" pkg="rviz" type="rviz"/>
+
+	<node name="robot_arm" pkg="gazebo_ros" type="spawn_model" output="screen"
+              args="-urdf -param robot_description -model six_dof_arm" /> 
+
+     <!--start up the controller plug-ins via the controller manager -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+     output="screen" ns="/six_dof_arm" args="
+     				 joint_state_controller 
+                     joint_one_position_controller
+                     joint_two_position_controller
+                     joint_three_position_controller
+                     joint_three_two_position_controller
+                     joint_four_position_controller
+                     joint_five_position_controller
+                     gripper_one_joint_position_controller
+                     gripper_two_joint_position_controller"></node>
+
+
+
+</launch>

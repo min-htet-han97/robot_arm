@@ -1,0 +1,176 @@
+<!-- =================================================================================== -->
+<!-- |    @uthor Min Htet Han ( ROM Robotics )                                         | -->
+<!-- |    ROS Simulation Online Course                                                 | -->
+<!-- =================================================================================== -->
+
+
+<robot name="6dof_arm">
+	<link name="base_frame">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.05 0.15"/>
+			</geometry>
+		</visual>
+	 <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+				<box size="0.05 0.05 0.15"/>
+	  </geometry>
+     </collision>
+ </link>
+
+ <joint name="joint_one" type="revolute">
+		<origin rpy="0 0 0" xyz="0 0 0.075"/>
+		<parent link="base_frame"/>
+		<child link="link_one"/>
+		<axis xyz="0 0 1"/>
+		<limit lower="-3.14" upper="3.14" effort="200" velocity="0.2"/>
+	</joint>
+
+ 	<link name="link_one">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0.1525"/> <!--0.1524-->
+			<geometry>
+		
+				<box size="0.05 0.05 0.3048"/>  <!-- 12 in for link one -->
+			</geometry> <!-- 12 in for link one -->
+		
+		</visual>
+	 <collision>
+      <origin
+        xyz="0 0 0.1524" rpy="0 0 0" />
+     
+		 <geometry>
+				<box size="0.05 0.05 0.3048"/>  <!-- 12 in for link one -->
+			</geometry>
+	
+     </collision>
+ </link>
+
+ <joint name="joint_two" type="revolute">
+		<origin rpy="0 0 0" xyz="0 0 0.3048"/>
+		<parent link="link_one"/>
+		<child link="link_two"/>
+		<axis xyz="0 1 0"/>
+		<limit lower="-3.14" upper="3.14" effort="200" velocity="0.2"/>
+	</joint>
+
+<link name="link_two">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0.1651"/>
+			<geometry>
+				<box size="0.05 0.05 0.3302"/>  <!-- 12 in for link one -->
+			</geometry>
+		</visual>
+	 <collision>
+      <origin
+        xyz="0 0 0.1651" rpy="0 0 0" />
+      <geometry>
+				<box size="0.05 0.05 0.3302"/>
+	  </geometry>
+     </collision>
+ </link>
+
+ <joint name="joint_three" type="revolute">
+		<origin rpy="0 0 0" xyz="0 0 0.3048"/>
+		<parent link="link_two"/>
+		<child link="link_three"/>
+		<axis xyz="0 1 0"/>
+		<limit lower="-3.14" upper="3.14" effort="200" velocity="0.2"/>
+	</joint>
+
+<link name="link_three">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0.09525"/>
+			<geometry>
+				<box size="0.05 0.05 0.1905"/>  <!-- 12 in for link one -->
+			</geometry>
+		</visual>
+	 <collision>
+      <origin
+        xyz="0 0 0.1905" rpy="0 0 0" />
+      <geometry>
+				<box size="0.05 0.05 0.1905"/>
+	  </geometry>
+     </collision>
+ </link>
+
+  <joint name="joint_three_two" type="revolute">
+		<origin rpy="0 0 0" xyz="0 0 0.1905"/>
+		<parent link="link_three"/>
+		<child link="link_three_two"/>
+		<axis xyz="0 0 1"/>
+		<limit lower="-3.14" upper="3.14" effort="200" velocity="0.2"/>
+	</joint>
+
+ <link name="link_three_two">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0.09525"/>
+			<geometry>
+				<box size="0.05 0.05 0.1905"/>  <!-- 7.5 in for link one -->
+			</geometry>
+		</visual>
+	 <collision>
+      <origin
+        xyz="0 0 0.09525" rpy="0 0 0" />
+      <geometry>
+				<box size="0.05 0.05 0.1905"/>
+	  </geometry>
+     </collision>
+ </link>
+
+   <joint name="joint_four" type="revolute">
+		<origin rpy="0 0 0" xyz="0 0 0.1905"/>
+		<parent link="link_three_two"/>
+		<child link="link_four"/>
+		<axis xyz="0 1 0"/>
+		<limit lower="-3.14" upper="3.14" effort="200" velocity="0.2"/>
+	</joint>
+
+ <link name="link_four">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0.05715"/>
+			<geometry>
+				<box size="0.05 0.05 0.1143"/>  <!-- 7.5 in for link one -->
+			</geometry>
+		</visual>
+	 <collision>
+      <origin
+        xyz="0 0 0.05715" rpy="0 0 0" />
+      <geometry>
+				<box size="0.05 0.05 0.1143"/>
+	  </geometry>
+     </collision>
+ </link>
+
+   <joint name="joint_five" type="revolute">
+		<origin rpy="0 0 0" xyz="0 0 0.1143"/>
+		<parent link="link_four"/>
+		<child link="link_five"/>
+		<axis xyz="0 0 1"/>
+		<limit lower="-3.14" upper="3.14" effort="200" velocity="0.2"/>
+	</joint>
+
+ <link name="link_five">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0.01905"/>
+			<geometry>
+				<box size="0.05 0.05 0.0381"/>  <!-- 7.5 in for link one -->
+			</geometry>
+		</visual>
+	 <collision>
+      <origin
+        xyz="0 0 0.05715" rpy="0 0 0" />
+      <geometry>
+				<box size="0.05 0.05 0.0381"/>
+	  </geometry>
+     </collision>
+ </link>
+
+
+ 
+     
+</robot>

@@ -1,0 +1,8 @@
+#goal definition
+trajectory_msgs/JointTrajectory trajectory
+---
+#result definition
+bool returnStatus
+---
+#feedback
+int32 feedback
